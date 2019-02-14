@@ -8,4 +8,29 @@ Normally, one of the solutions is to save data in database at each step and retr
 
 Another approach is to use session variables. You could store data in session valiables at each step so that the mechanism we are looking for can be easily overcome. Probably I am reluctant to use session variables unless I really need them. Do we have an alternative?
 
-Thinking, thinking, thinking... I created this mechanism by using the MVC architecture by using Asp.Net Core MVC, without database and no session variables. Enjoy!
+Thinking, thinking, thinking... I created this mechanism by using the MVC architecture by using Asp.Net Core MVC, without database and no session variables.
+
+
+# What's the idea?
+Tha basic idea is to use a static class to store data from your form (at each step). This class is the same type of your model. Once  your model has been created, in the `helper` class you need to set propertly the `sync()` static method.
+For example, if `MyModel` is your model, 
+
+``` 
+  public static class Helper
+    {
+        private static MyModel MyModelInController { get; set; }
+
+        public static MyModel Sync(this MyModel myModel)
+        {
+            // ..................................
+            // update your MyModelInController
+            // ..................................
+            
+            return MyModelInController;
+        }
+    }
+```
+
+After that, it's enough to call `model.Sync()` when returning your View, like this:
+
+`return View("YourView", model.Sync());`
