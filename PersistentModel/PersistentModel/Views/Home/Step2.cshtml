@@ -1,0 +1,21 @@
+﻿@model MyModel
+
+@{
+   ViewData["Title"] = "Step 2";
+}
+
+<h1>Step 2</h1>
+
+<form asp-controller="Home" asp-action="OnStep2" method="post">
+    <div class="alert alert-primary" role="alert">Message: @Model.Message</div>
+    <div class="form-group">
+        <label for="inputname">Name</label>
+        <input class="form-control" type="text" value="@Model.Name" readonly>
+        <label for="inputsurname">Surname</label>
+        <input class="form-control" type="text" value="@Model.Surname" readonly>
+        <br />
+        <label for="inputchildren">Number of Children</label>
+        <input type="text" class="form-control" name="numchildren" asp-for="NumChildren" id="inputchildren" placeholder="Enter the number of your children">
+    </div>
+    <button type="submit" class="btn btn-primary">Go again</button>
+</form>

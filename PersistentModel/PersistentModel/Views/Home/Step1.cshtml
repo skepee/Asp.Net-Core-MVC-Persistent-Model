@@ -1,0 +1,19 @@
+﻿@model MyModel
+
+@{
+   ViewData["Title"] = "Step 1";
+}
+
+<h1>Step 1</h1>
+
+<form asp-controller="Home" asp-action="OnStep1" method="post">
+    <div class="form-group">
+        <label for="inputname">Name</label>
+        <input type="text" class="form-control" name="name" asp-for="Name" id="inputname" aria-describedby="emailHelp" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+        <label for="inputsurname">Surname</label>
+        <input type="text" class="form-control" name="surname" asp-for="Surname" id="inputsurname" placeholder="Enter your Surname">
+    </div>
+    <button type="submit" class="btn btn-primary">Go</button>
+</form>

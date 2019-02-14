@@ -1,0 +1,25 @@
+﻿@model MyModel
+
+@{
+    ViewData["Title"] = "Result";
+    Model.Message= "Final result";
+}
+
+<h1>Result</h1>
+<div class="alert alert-primary" role="alert">Message: @Model.Message</div>
+<div class="form-group">
+    <label for="inputname">Name</label>
+    <input class="form-control" type="text" value="@Model.Name" readonly>
+    <label for="inputsurname">Surname</label>
+    <input class="form-control" type="text" value="@Model.Surname" readonly>
+    <br />
+    <label for="inputchildren">Number of Children</label>
+    <input type="text" class="form-control" name="numchildren" value="@Model.NumChildren" id="inputchildren" readonly>
+    <br />
+    <ul class="list-group">
+        @foreach (var item in Model.Children)
+        {
+            <li class="list-group-item">@item.Name</li>
+        }
+    </ul>
+</div>
